@@ -110,7 +110,7 @@ export class MsEdgeTTS {
                 `).then(resolve);
             };
             this._ws.onmessage = (m) => {
-                    const buffer = Buffer.from(m.data);
+                    const buffer = Buffer.from(m.data as string);
                     const message = buffer.toString()
                     const requestId = /X-RequestId:(.*?)\r\n/gm.exec(message)[1];
                     if (message.includes("Path:turn.start")) {
